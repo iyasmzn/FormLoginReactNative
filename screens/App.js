@@ -42,7 +42,7 @@ export default class App extends Component {
 						</Text>
 						<TextInput 
 							style={styles.textInput}
-							autoCompleteType="username"
+							secureTextEntry={true}
 							placeholder="type your password"
 						/>
 					</View>
