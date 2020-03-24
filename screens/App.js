@@ -5,6 +5,7 @@ import {
 	Text,
 	TextInput,
 	StyleSheet,
+	TouchableNativeFeedback,
 } from 'react-native';
 
 export default class App extends Component {
@@ -45,11 +46,13 @@ export default class App extends Component {
 							placeholder="type your password"
 						/>
 					</View>
+					<TouchableNativeFeedback>
 					<View style={styles.buttonWrapper}>
 						<Text style={styles.buttonText}>
 						  SUBMIT
 						</Text>
 					</View>
+					</TouchableNativeFeedback>
 				</View>
 			</View>
 		);
@@ -80,6 +83,7 @@ const styles = StyleSheet.create({
 		paddingBottom: 20,
 		marginBottom: 20,
 		width: '80%',
+		letterSpacing: 2
 	},
 	inputGroup: {
 		paddingTop: 5,
@@ -100,11 +104,14 @@ const styles = StyleSheet.create({
 	buttonWrapper: {
 		alignItems: 'center',
 		backgroundColor: '#34d192',
-		paddingVertical: 10,
+		paddingVertical: 15,
 		borderWidth: 1,
 		borderColor: '#53edaf', 
+		marginTop: 20,
 	},
 	buttonText: {
 		color: 'white',
+		fontWeight: 'bold',
+		letterSpacing: 2
 	},
 });
