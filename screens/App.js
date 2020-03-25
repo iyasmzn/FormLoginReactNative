@@ -5,8 +5,10 @@ import {
 	Text,
 	TextInput,
 	StyleSheet,
-	TouchableNativeFeedback,
+	TouchableOpacity,
 	Image,
+	KeyboardAvoidingView,
+	ScrollView,
 } from 'react-native';
 
 export default class App extends Component {
@@ -25,27 +27,38 @@ export default class App extends Component {
 			email: tek,
 		})
 	}
-	takePassword(tek) {
+	changePassword(tek) {
+		var passData 		= tek.toString();
+		var lengthData 	= passData.length;
+		var angka 			=	1;
+		var Simbol 			=	'*'+lengthData;
+		for (let i = 0; i < lengthData; i++) {
+		return Simbol;
+		}
+	}
+	placePassword(teek) {
 		this.setState({
-			password: tek,
+			password: this.changePassword(teek),
 		})
 	}
 	submitForm() {
 		alert(
 			'Inserted Form : ' +  
-			'Username : ' + this.state.username +
-			'Email : ' + this.state.email +
-			'Password' + this.state.password
-
+			'\n\n\nUsername : ' + this.state.username +
+			'\n\nEmail : ' + this.state.email +
+			'\n\nPassword : ' + this.state.password +
+			'\n\n'
 			);
 	}
 	render() {
 		return(
+			<KeyboardAvoidingView style={{flex: 1}} behavior="height">
+			  
 			<View style={styles.container}>
 
 				<Image
 				  style={styles.backgroundImage}
-				  source={{uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSJCTBBAoyHTdk_AkdfJr6eZPGRb44K9TJcLC1aRT1yYK0XGlig'}}
+				  source={{uri: 'https://images.wallpapersden.com/image/download/tile-5k_65712_5120x2880.jpg'}}
 				/>
 				
 				<View style={styles.card}>
@@ -80,24 +93,32 @@ export default class App extends Component {
 							style={styles.textInput}
 							secureTextEntry={true}
 							placeholder="type your password"
-							onChangeText={ (text) => this.takePassword(text) }
+							onChangeText={ (text) => this.placePassword(text) }
 						/>
 					</View>
-					<TouchableNativeFeedback onPress={ () => this.submitForm() }>
+					<TouchableOpacity onPress={ () => this.submitForm() }>
 						<View style={styles.buttonWrapper}>
 							<Text style={styles.buttonText}>
 							  SUBMIT
 							</Text>
 						</View>
-					</TouchableNativeFeedback>
+					</TouchableOpacity>
 				</View>
 			</View>
+
+			</KeyboardAvoidingView>
 		);
 	}
 }
 // #34d192
 // #53edaf
 const styles = StyleSheet.create({
+	contentContainer: {
+		height: 'auto',
+	},
+	scrollView: {
+		height: '100%',
+	},
 	container: {
 		flex: 1,
 		justifyContent: 'center',
@@ -121,9 +142,9 @@ const styles = StyleSheet.create({
 		fontSize: 40,
 		textTransform: 'uppercase',
 		fontWeight: 'bold',
-		color: '#34d192',
+		color: '#ef5c79',
 		borderBottomWidth: 4,
-		borderBottomColor: '#53edaf',
+		borderBottomColor: '#ef5c79',
 		paddingBottom: 20,
 		marginBottom: 20,
 		width: '80%',
@@ -136,22 +157,22 @@ const styles = StyleSheet.create({
 	textGroup: {
 		fontFamily: 'sans-serif',
 		fontWeight: 'bold',
-		color: '#34d192',
+		color: '#ffa4b3',
 		fontSize: 15,
 	},
 	textInput: {
 		padding: 7,
 		paddingVertical: 10,
-		color: '#34d192',
+		color: '#ef5c79',
 		borderBottomWidth: 2,
-		borderBottomColor: '#53edaf',
+		borderBottomColor: '#ffa4b3',
 	},
 	buttonWrapper: {
 		alignItems: 'center',
-		backgroundColor: '#34d192',
+		backgroundColor: '#ef5c79',
 		paddingVertical: 15,
 		borderWidth: 1,
-		borderColor: '#53edaf', 
+		borderColor: '#ffa4b3', 
 		marginTop: 20,
 	},
 	buttonText: {
