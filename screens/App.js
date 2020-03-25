@@ -6,12 +6,48 @@ import {
 	TextInput,
 	StyleSheet,
 	TouchableNativeFeedback,
+	Image,
 } from 'react-native';
 
 export default class App extends Component {
+	state = {
+		username: '',
+		email: '',
+		password: '',
+	}
+	takeUsername(tek) {
+		this.setState({
+			username: tek,
+		})
+	}
+	takeEmail(tek) {
+		this.setState({
+			email: tek,
+		})
+	}
+	takePassword(tek) {
+		this.setState({
+			password: tek,
+		})
+	}
+	submitForm() {
+		alert(
+			'Inserted Form : ' +  
+			'Username : ' + this.state.username +
+			'Email : ' + this.state.email +
+			'Password' + this.state.password
+
+			);
+	}
 	render() {
 		return(
 			<View style={styles.container}>
+
+				<Image
+				  style={styles.backgroundImage}
+				  source={{uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSJCTBBAoyHTdk_AkdfJr6eZPGRb44K9TJcLC1aRT1yYK0XGlig'}}
+				/>
+				
 				<View style={styles.card}>
 					<Text style={styles.title}>
 					  Form Register.
@@ -22,8 +58,8 @@ export default class App extends Component {
 						</Text>
 						<TextInput 
 							style={styles.textInput}
-							autoCompleteType="username"
 							placeholder="your name here..."
+							onChangeText={ (text) => this.takeUsername(text) }
 						/>
 					</View>
 					<View style={styles.inputGroup}>
@@ -32,8 +68,8 @@ export default class App extends Component {
 						</Text>
 						<TextInput 
 							style={styles.textInput}
-							autoCompleteType="username"
 							placeholder="your email here..."
+							onChangeText={ (text) => this.takeEmail(text) }
 						/>
 					</View>
 					<View style={styles.inputGroup}>
@@ -44,14 +80,15 @@ export default class App extends Component {
 							style={styles.textInput}
 							secureTextEntry={true}
 							placeholder="type your password"
+							onChangeText={ (text) => this.takePassword(text) }
 						/>
 					</View>
-					<TouchableNativeFeedback>
-					<View style={styles.buttonWrapper}>
-						<Text style={styles.buttonText}>
-						  SUBMIT
-						</Text>
-					</View>
+					<TouchableNativeFeedback onPress={ () => this.submitForm() }>
+						<View style={styles.buttonWrapper}>
+							<Text style={styles.buttonText}>
+							  SUBMIT
+							</Text>
+						</View>
 					</TouchableNativeFeedback>
 				</View>
 			</View>
@@ -65,13 +102,20 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#53edaf',
+		position: 'relative',
+		// backgroundColor: '#53edaf',
+		// backgroundImage: "url('../../../../dashboard/image/anime-bg.jpg')",
+	},
+	backgroundImage: {
+		position: 'absolute',
+		top: 0, bottom: 0, left: 0, right: 0,
 	},
 	card: {
 		width: '90%',
 		backgroundColor: 'white',
 		padding: 20,
 		elevation: 10,
+		borderTopEndRadius: 50,
 	},
 	title: {
 		fontSize: 40,
@@ -93,6 +137,7 @@ const styles = StyleSheet.create({
 		fontFamily: 'sans-serif',
 		fontWeight: 'bold',
 		color: '#34d192',
+		fontSize: 15,
 	},
 	textInput: {
 		padding: 7,
