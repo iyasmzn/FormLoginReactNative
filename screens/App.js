@@ -60,7 +60,7 @@ export default class App extends Component {
 				
 				<View style={styles.card}>
 					<Text style={styles.title}>
-					  Form Register.
+					  Register Form.
 					</Text>
 					<View style={styles.inputGroup}>
 						<Text style={styles.textGroup}>
@@ -69,6 +69,7 @@ export default class App extends Component {
 						<TextInput 
 							style={styles.textInput}
 							placeholder="your name here..."
+							placeholderTextColor="#ffd9d9"
 							onChangeText={ (text) => this.takeUsername(text) }
 						/>
 					</View>
@@ -79,6 +80,8 @@ export default class App extends Component {
 						<TextInput 
 							style={styles.textInput}
 							placeholder="your email here..."
+							placeholderTextColor="#ffd9d9"
+							autoCapitalize="none"
 							onChangeText={ (text) => this.takeEmail(text) }
 						/>
 					</View>
@@ -90,6 +93,7 @@ export default class App extends Component {
 							style={styles.textInput}
 							secureTextEntry={true}
 							placeholder="type your password"
+							placeholderTextColor="#ffd9d9"
 							onChangeText={ (text) => this.placePassword(text) }
 						/>
 					</View>
