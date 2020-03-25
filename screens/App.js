@@ -30,11 +30,8 @@ export default class App extends Component {
 	changePassword(tek) {
 		var passData 		= tek.toString();
 		var lengthData 	= passData.length;
-		var angka 			=	1;
-		var Simbol 			=	'*'+lengthData;
-		for (let i = 0; i < lengthData; i++) {
-		return Simbol;
-		}
+		var Simbol 			=	'*';
+		return Simbol.repeat(lengthData);
 	}
 	placePassword(teek) {
 		this.setState({
